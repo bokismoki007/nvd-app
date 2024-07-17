@@ -1,0 +1,22 @@
+.answer-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.answer-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.answer-card p {
+    margin: 0;
+}
+
+.answer-card:hover {
+    transform: scale(1.05);
+}
