@@ -1,0 +1,52 @@
+.survey {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 70%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  margin-top: 30px;
+  width: 70%;
+  background-color: #f3f3f3;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 10px;
+  background-color: #2f8632;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.answers {
+  gap: 16px;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+img {
+  height: 15vh;
+  width: 20vh;
+}
