@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import Navbar from "./Navbar";
 import "../styles/Home.css";
 
 const Home = () => {
@@ -15,13 +16,13 @@ const Home = () => {
           <img src="../../images/app-logo.png" />
           <ul>
             <li>
-              <a href="#section1">Home</a>
+              <a href="#home">Home</a>
             </li>
             <li>
-              <a href="#section2">About</a>
+              <a href="#about">About</a>
             </li>
             <li>
-              <a href="#section3">Reviews</a>
+              <a href="#contact">Contact</a>
             </li>
           </ul>
         </nav>
@@ -36,8 +37,8 @@ const Home = () => {
             World-Class Training Programs, Premium Content, and guaranteed Fast
             Visible Results!
           </h2>
-        
-          <Link to="/workout-survey">
+
+          <Link to="/workout-survey" className="btn-text">
             <button className="button">Take the Survey</button>
           </Link>
         </div>
