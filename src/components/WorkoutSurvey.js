@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState , useEffect} from "react";
+import { Link, useNavigate, createSearchParams} from "react-router-dom";
 import Loading from "./Loading";
 import "../styles/WorkoutSurvey.css";
 import AnswerCard from "./AnswerCard";
 
 const WorkoutSurvey = () => {
   const [loading, setLoading] = useState(false);
-  const [answers, setAnswers] = useState({});
+  const [answers,setAnswers] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const navigate = useNavigate();
@@ -112,13 +112,18 @@ const WorkoutSurvey = () => {
   ];
 
   const handleAnswerChange = (answer) => {
-    setSelectedAnswer(answer);
-    setAnswers((prev) => ({ ...prev, [currentQuestionIndex]: answer }));
+    setAnswers(oldArray => [...oldArray,answer])
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      handleSubmit();
     }
+    else {
+      lastUpdate(answers,answer)
+    }
+  };
+
+  const lastUpdate = (oldArray,answe) =>{
+      oldArray.push(answe)
+      handleSubmit(oldArray)
   };
 
   const handleGoBack = () => {
@@ -129,18 +134,24 @@ const WorkoutSurvey = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (array) => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate.push("/workout");
+      navigate("/workout",{
+        state: {
+          args: array
+        }
+      });
     }, 2000);
   };
+
 
   if (loading) return <Loading />;
 
   const currentQuestion = questions[currentQuestionIndex];
   const progress = (currentQuestionIndex / questions.length) * 100;
+
 
   return (
     <div className="survey">
