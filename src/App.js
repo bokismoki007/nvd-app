@@ -5,6 +5,10 @@ import MoodSurvey from "./components/MoodSurvey";
 import WorkoutSurvey from "./components/WorkoutSurvey";
 import Workout from "./components/Workout";
 import Playlist from "./components/Playlist";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Login from "./components/Login";
+
 
 const App = () => {
   return (
@@ -15,6 +19,9 @@ const App = () => {
         <Route path="/workout-survey" element={<WorkoutSurvey />} />
         <Route path="/workout" element={<Workout />} />
         <Route path="/playlist" element={<Playlist />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

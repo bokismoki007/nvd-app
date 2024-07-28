@@ -22,14 +22,14 @@
   height: 40px;
   display: flex;
   grid-column-start: auto;
-  /* border: 3px solid #3b3b3b; */
-  border-radius: 50%;
-  padding: 2px;
   position: absolute;
   left: 5px;
   bottom: 25px;
-  align-items: center;
-  justify-content: center;
+  cursor: pointer;
+  justify-content: start;
+  align-items: start;
+  top: 50px;
+  left: 50px;
   cursor: pointer;
 }
 

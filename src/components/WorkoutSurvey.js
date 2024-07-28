@@ -149,7 +149,7 @@ const WorkoutSurvey = () => {
           <img src="../../images/arrow.png" />
         </div>
 
-        <img src="../../images/app-logo.png" />
+        <img className="logo" src="../../images/app-logo.png" />
       </div>
 
       <div className="progress-bar">

@@ -54,8 +54,6 @@ nav ul li a {
 
 nav ul li a:hover {
   color: #86887f;
-  text-decoration: underline;
-  text-decoration: none;
 }
 
 nav ul li a::after {
@@ -98,7 +96,7 @@ span {
   letter-spacing: 0.2rem;
 }
 
-main {
+section {
   color: #babcb1;
 }
 
@@ -118,9 +116,7 @@ button:hover {
   transform: scale(1.05); 
 }
 
-/* /////////////////////////////
-   /////////////////////////////
-*/
+/* Media queries */
 
 @media (max-width: 1200px) {
   nav {
@@ -172,7 +168,7 @@ button:hover {
 
   nav ul li {
     padding-left: 15px;
-    padding-top: 10px;
+    padding-top: -10px;
   }
 
   nav ul li a {
@@ -243,3 +239,4 @@ button:hover {
     font-size: 8px;
   }
 }
+
