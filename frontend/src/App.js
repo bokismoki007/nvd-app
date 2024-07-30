@@ -8,11 +8,6 @@ import Playlist from "./components/Playlist";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Login from "./components/Login";
-import Profile from "./components/Profile";
-import Plan from "./components/Plan";
-import DeletePlaylist from "./components/DeletePlaylist";
-import DeletePlan from "./components/DeletePlan";
-
 
 const App = () => {
   return (
@@ -26,10 +21,6 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/plan" element={<Plan />} />
-        <Route path="/delete-playlist" element={<DeletePlaylist />} />
-        <Route path="/delete-plan" element={<DeletePlan />} />
       </Routes>
     </Router>
   );
