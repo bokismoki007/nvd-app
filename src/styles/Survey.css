@@ -1,0 +1,13 @@
+.survey {
+    padding: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.answers {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
