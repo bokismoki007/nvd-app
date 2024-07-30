@@ -24,39 +24,11 @@ const MoodSurvey = () => {
       ],
     },
   ];
-  const playlists = {
-    happy: 'https://open.spotify.com/playlist/37i9dQZF1EIgG2NEOhqsD7',
-    sad: 'https://open.spotify.com/playlist/37i9dQZF1DX76Wlfdnj7AP',
-    energetic: 'https://open.spotify.com/playlist/0eGBLt9vFkefYCF543CxaY',
-    joyful: 'https://open.spotify.com/playlist/37i9dQZF1EQp9BVPsNVof1',
-    relaxed: 'https://open.spotify.com/playlist/37i9dQZF1EIhshGKK0SEkb',
-    drowsy: 'https://open.spotify.com/playlist/37i9dQZF1EIgbjUtLiWmHt'
-  };
+
   const handleAnswerChange = (answer) => {
-    setSelectedAnswer(answer)
+    setSelectedAnswer(answer);
   };
-  const determineLink = () => {
-    let emotionLink;
-    if(selectedAnswer=="Happy"){
-      emotionLink=playlists.happy
-    }
-    else if(selectedAnswer=="Sad"){
-      emotionLink=playlists.sad
-    }
-    else if(selectedAnswer=="Energetic"){
-      emotionLink=playlists.energetic
-    }
-    else if(selectedAnswer=="Joyful"){
-      emotionLink=playlists.joyful
-    }
-    else if(selectedAnswer=="Relaxed"){
-      emotionLink=playlists.relaxed
-    }
-    else if(selectedAnswer=="Drowsy"){
-      emotionLink=playlists.drowsy
-    }
-    return emotionLink;
-  }
+
   const handleNextQuestion = () => {
     setAnswers((prev) => ({
       ...prev,
@@ -72,10 +44,9 @@ const MoodSurvey = () => {
 
   const handleSubmit = () => {
     setLoading(true);
-    const link = determineLink();
     setTimeout(() => {
       setLoading(false);
-      window.location.href=link;
+      navigate.push("/playlist");
     }, 2000);
   };
 

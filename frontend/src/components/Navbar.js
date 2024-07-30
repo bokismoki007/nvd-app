@@ -10,11 +10,9 @@ const Navbar = () => {
   };
 
   return (
-    <header>
-      <nav className="navbar">
-        <div className="logo">
-          <img src="../../images/app-logo.png" alt="logo" />
-        </div>
+    <nav>
+      <div className="nav-container">
+        <img src="../../images/app-logo.png" alt="logo" className="logo" />
 
         <div className="menu-icon" onClick={toggleMenu}>
           &#9776;
@@ -22,17 +20,29 @@ const Navbar = () => {
 
         <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           <li>
-            <Link to="#home">Home</Link>
+            <Link to="/" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="#about">About</Link>
+            <Link to="/about" onClick={() => setIsMenuOpen(false)}>
+              About
+            </Link>
           </li>
           <li>
-            <Link to="#contact">Contact</Link>
+            <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+              Contact
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+              Login
+            </Link>
           </li>
         </ul>
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 };
 

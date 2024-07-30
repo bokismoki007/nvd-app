@@ -1,0 +1,157 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.wraps {
+  position: relative;
+  width: 45vh;
+  height: 50vh;
+  background: transparent;
+  background-color: #9c9c9c;
+  border: 2px solid rgba(156, 156, 156, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: height 0.2 ease;
+}
+
+.wraps.active {
+  height: 60vh;
+}
+
+.wraps .form-box {
+  width: 100%;
+}
+
+.wraps .form-box.login {
+  transition: transform 0.18s ease;
+  transform: translateX(0);
+}
+
+.wraps.active .form-box.login {
+  transition: none;
+  transform: translateX(-400px);
+}
+
+.wraps .form-box.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  transition: none;
+  transform: translateX(420px);
+}
+
+.wraps.active .form-box.register {
+  transition: transform 0.18s ease;
+  transform: translateX(0);
+}
+
+.wraps .form-box {
+  width: 100%;
+  padding: 5vh;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #000;
+  margin: 30px 0;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 500;
+  pointer-events: none;
+  color: #000;
+  transition: 0.5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #000;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.2em;
+  color: #000;
+  line-height: 57px;
+}
+
+.remember-forgot {
+  font-size: 0.9em;
+  color: #000;
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.remember-forgot label input {
+  accent-color: #000;
+  margin-right: 3px;
+}
+
+.btn {
+  width: 100%;
+}
+
+.login-register {
+  font-size: 0.9em;
+  color: #000;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px;
+}
+
+.login-register p a,
+.remember-forgot a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-register p a:hover,
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.again {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  cursor: pointer;
+}
