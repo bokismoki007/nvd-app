@@ -1,0 +1,85 @@
+.survey {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 70%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.go_back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  grid-column-start: auto;
+  position: absolute;
+  left: 5px;
+  bottom: 25px;
+  cursor: pointer;
+  justify-content: start;
+  align-items: start;
+  top: 50px;
+  left: 50px;
+  cursor: pointer;
+}
+
+.go_back img {
+  padding-top: 1px;
+  padding-right: 3px;
+  width: 25px;
+  height: 25px;
+}
+
+.progress-bar {
+  margin-top: 30px;
+  width: 70%;
+  background-color: #fff;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 10px;
+  background-color: #3b3b3b;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.question {
+  margin-bottom: 20px;
+  color: #3b3b3b;
+}
+
+.answers {
+  gap: 16px;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+}
+
+img {
+  height: 15vh;
+  width: 20vh;
+}
