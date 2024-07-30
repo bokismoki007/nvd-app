@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState , useEffect} from "react";
+import { Link, useNavigate, createSearchParams} from "react-router-dom";
 import Loading from "./Loading";
 import "../styles/WorkoutSurvey.css";
 import AnswerCard from "./AnswerCard";
+import axios from "axios";
 
 const WorkoutSurvey = () => {
   const [loading, setLoading] = useState(false);
-  const [answers, setAnswers] = useState({});
+  const [answers,setAnswers] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const navigate = useNavigate();
@@ -112,13 +113,18 @@ const WorkoutSurvey = () => {
   ];
 
   const handleAnswerChange = (answer) => {
-    setSelectedAnswer(answer);
-    setAnswers((prev) => ({ ...prev, [currentQuestionIndex]: answer }));
+    setAnswers(oldArray => [...oldArray,answer])
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      handleSubmit();
     }
+    else {
+      lastUpdate(answers,answer)
+    }
+  };
+
+  const lastUpdate = (oldArray,answe) =>{
+      oldArray.push(answe)
+      handleSubmit(oldArray)
   };
 
   const handleGoBack = () => {
@@ -129,18 +135,103 @@ const WorkoutSurvey = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (array) => {
+    const formData1 = new FormData();
+    const formData2 = new FormData();
+    const formData3 = new FormData();
+    let response;
+    let response1;
+    let response2;
+    formData1.append("goal", array[0])
+    formData1.append("currentBody", array[3])
+    formData1.append("targetBody", array[4])
+    if(sessionStorage.getItem("user")!=null){
+      const userInfo = JSON.parse(sessionStorage.getItem("user"));
+      formData1.append("name", array[0] + " workout");
+      formData1.append("userId",userInfo.id);
+    }
+    else {
+      formData1.append("name", "nothing");
+      formData1.append("userId", "nothing");
+    }
+    try {
+      response = await axios.post(
+          'http://localhost:8080/api/exercise/find',
+          formData1, {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          }
+      )
+    }
+    catch(error){
+      console.error('Error during POST request:', error);
+    }
+
+    formData2.append("goal", array[0])
+    formData2.append("targetBody", array[4])
+    if(sessionStorage.getItem("user")!=null){
+      const userInfo = JSON.parse(sessionStorage.getItem("user"));
+      formData2.append("userId",userInfo.id);
+    }
+    else{
+      formData2.append("userId", "nothing");
+    }
+    try {
+      response1 = await axios.post(
+          'http://localhost:8080/api/cardio/find-before',
+          formData2, {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          }
+      )
+    }
+    catch(error){
+      console.error('Error during POST request:', error);
+    }
+
+    formData3.append("goal", array[0])
+    formData3.append("activity", array[5])
+    if(sessionStorage.getItem("user")!=null){
+      const userInfo = JSON.parse(sessionStorage.getItem("user"));
+      formData3.append("userId",userInfo.id);
+    }
+    else{
+      formData3.append("userId", "nothing");
+    }
+    try {
+      response2 = await axios.post(
+          'http://localhost:8080/api/cardio/find-after',
+          formData3, {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          }
+      )
+    }
+    catch(error){
+      console.error('Error during POST request:', error);
+    }
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate.push("/workout");
+      navigate("/workout",{
+        state: {
+          before: response1.data,
+          exercises: response.data,
+          after: response2.data,
+        }
+      });
     }, 2000);
   };
+
 
   if (loading) return <Loading />;
 
   const currentQuestion = questions[currentQuestionIndex];
   const progress = (currentQuestionIndex / questions.length) * 100;
+
 
   return (
     <div className="survey">

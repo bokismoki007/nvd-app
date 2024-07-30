@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
+import axios from "axios";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,6 +9,23 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const Logout = async () => {
+    const formData = new FormData();
+    formData.append('username',JSON.parse(sessionStorage.getItem('user')).username)
+    const response = await axios.post(
+        'http://localhost:8080/api/logout',
+        formData,{
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+    );
+    sessionStorage.removeItem('user');
+    alert(response.data)
+    window.location.href="/";
+  }
+
 
   return (
     <nav>
@@ -34,11 +52,23 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-
+          {sessionStorage.getItem("user") ? (
+              <li>
+                <Link to="/profile">
+                  Profile
+                </Link>
+              </li>
+          ) : (null)}
           <li>
-            <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-              Login
-            </Link>
+            {sessionStorage.getItem("user") ? (
+                <Link to="/" onClick={Logout}>
+                  Logout
+                </Link>
+            ) : (
+                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                  Login
+                </Link>
+            )}
           </li>
         </ul>
       </div>

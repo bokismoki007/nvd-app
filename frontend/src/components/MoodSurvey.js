@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import "../styles/MoodSurvey.css";
 import AnswerCard from "./AnswerCard";
+import axios from "axios";
 
 const MoodSurvey = () => {
   const [loading, setLoading] = useState(false);
@@ -24,11 +25,39 @@ const MoodSurvey = () => {
       ],
     },
   ];
-
-  const handleAnswerChange = (answer) => {
-    setSelectedAnswer(answer);
+  const playlists = {
+    happy: 'https://open.spotify.com/playlist/37i9dQZF1EIgG2NEOhqsD7',
+    sad: 'https://open.spotify.com/playlist/37i9dQZF1DX76Wlfdnj7AP',
+    energetic: 'https://open.spotify.com/playlist/0eGBLt9vFkefYCF543CxaY',
+    joyful: 'https://open.spotify.com/playlist/37i9dQZF1EQp9BVPsNVof1',
+    relaxed: 'https://open.spotify.com/playlist/37i9dQZF1EIhshGKK0SEkb',
+    drowsy: 'https://open.spotify.com/playlist/37i9dQZF1EIgbjUtLiWmHt'
   };
-
+  const handleAnswerChange = (answer) => {
+    setSelectedAnswer(answer)
+  };
+  const determineLink = () => {
+    let emotionLink;
+    if(selectedAnswer=="Happy"){
+      emotionLink=playlists.happy
+    }
+    else if(selectedAnswer=="Sad"){
+      emotionLink=playlists.sad
+    }
+    else if(selectedAnswer=="Energetic"){
+      emotionLink=playlists.energetic
+    }
+    else if(selectedAnswer=="Joyful"){
+      emotionLink=playlists.joyful
+    }
+    else if(selectedAnswer=="Relaxed"){
+      emotionLink=playlists.relaxed
+    }
+    else if(selectedAnswer=="Drowsy"){
+      emotionLink=playlists.drowsy
+    }
+    return emotionLink;
+  }
   const handleNextQuestion = () => {
     setAnswers((prev) => ({
       ...prev,
@@ -42,11 +71,32 @@ const MoodSurvey = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setLoading(true);
+    const link = determineLink();
+    if(sessionStorage.getItem('user')!=null){
+      const userInfo = JSON.parse(sessionStorage.getItem("user"));
+      const formData = new FormData();
+      formData.append("name", selectedAnswer + "playlist")
+      formData.append("url", link);
+      formData.append("id", userInfo.id)
+      try{
+        const response = await axios.post(
+            'http://localhost:8080/api/playlist',
+            formData, {
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            }
+        )
+      }
+      catch(error){
+        alert(error.response.data);
+      }
+    }
     setTimeout(() => {
       setLoading(false);
-      navigate.push("/playlist");
+      window.location.href=link;
     }, 2000);
   };
 

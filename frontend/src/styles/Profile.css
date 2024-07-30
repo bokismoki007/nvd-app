@@ -1,0 +1,17 @@
+.workout{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 70%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+table {
+    border: 1px solid black;
+}
+tr{
+    margin: 5px;
+}

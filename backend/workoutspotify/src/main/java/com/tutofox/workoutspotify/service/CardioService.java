@@ -7,4 +7,7 @@ public interface CardioService {
     Cardio create(String name, String goal, String time);
     CardioDto findCardioBefore(String goal, String targetBody);
     CardioDto findCardioAfter(String goal, String activity);
+    CardioDto getBeforeByPlanId(Integer planId);
+    CardioDto getAfterByPlanId(Integer planId);
+    void deleteByPlanId(Integer planId);
 }

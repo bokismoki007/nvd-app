@@ -12,7 +12,6 @@ public class ExerciseMapper {
         Weight weight = determineWeight(goal,currentBody);
         return new ExerciseDto(exercise.getName(), exercise.getType(), exercise.getTargetMuscles(), weight, exercise.getSets(), reps);
     }
-
     public Weight determineWeight(String goal, String currentBody){
         Weight weight = null;
         if(
