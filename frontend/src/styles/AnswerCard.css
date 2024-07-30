@@ -1,0 +1,70 @@
+body {
+  background: rgb(207, 179, 179);
+  background: radial-gradient(
+    circle,
+    rgba(207, 179, 179, 1) 0%,
+    rgba(75, 67, 64, 1) 100%
+  );
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.answer-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.5s ease-in-out,
+    border-color 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  width: 60vh;
+  height: 8vh;
+  background-color: #fff;
+}
+
+.answer-card img {
+  width: 11vh;
+  height: 10vh;
+  padding-left: 40px;
+}
+
+.answer-card h4 {
+  /* padding-right: 50px;
+  padding-left: 50px; */
+  margin: 0;
+}
+
+.answer-card p {
+  margin: 0;
+}
+
+.answers:nth-child(3) img {
+  width: 9vh;
+  height: 10vh;
+}
+
+.text {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.answer-card:hover {
+  transform: scale(1.05);
+  box-shadow: 15px 15px 15px 0px rgba(0, 0, 0, 0.4);
+}
+
+.answer-card.selected {
+  background-color: #fff1e9;
+  transform: scale(1.05);
+  box-shadow: 15px 15px 15px 0px rgba(0, 0, 0, 0.4);
+}
