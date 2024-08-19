@@ -22,7 +22,8 @@ public class Exercise {
     private int sets;
     private int minReps;
     private int maxReps;
-    public Exercise(String name, String type, String targetMuscles, String goal, int sets, int minReps, int maxReps) {
+    private String url;
+    public Exercise(String name, String type, String targetMuscles, String goal, int sets, int minReps, int maxReps, String url) {
         this.name = name;
         this.type = Type.valueOf(type);
         this.targetMuscles = targetMuscles;
@@ -30,6 +31,7 @@ public class Exercise {
         this.sets = sets;
         this.minReps = minReps;
         this.maxReps = maxReps;
+        this.url = url;
     }
 
 }

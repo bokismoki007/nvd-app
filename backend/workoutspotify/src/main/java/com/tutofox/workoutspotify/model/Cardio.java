@@ -16,10 +16,12 @@ public class Cardio {
     private String goal;
     @Enumerated(EnumType.STRING)
     private Time time;
+    private String url;
 
-    public Cardio(String name, String goal, String time) {
+    public Cardio(String name, String goal, String time, String url) {
         this.name = name;
         this.goal = goal;
         this.time = Time.valueOf(time);
+        this.url = url;
     }
 }

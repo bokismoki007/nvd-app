@@ -29,8 +29,8 @@ public class ExerciseServiceImpl implements ExerciseService {
     }
 
     @Override
-    public Exercise create(String name, String type, String targetMuscles,String goal, int sets, int minReps, int maxReps) {
-        Exercise exercise = new Exercise(name,type,targetMuscles,goal,sets,minReps,maxReps);
+    public Exercise create(String name, String type, String targetMuscles,String goal, int sets, int minReps, int maxReps, String url) {
+        Exercise exercise = new Exercise(name,type,targetMuscles,goal,sets,minReps,maxReps, url);
         return this.exerciseRepository.save(exercise);
     }
 

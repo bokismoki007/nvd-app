@@ -36,7 +36,7 @@ public class CardioController {
     public String createCardio(
             @RequestBody Cardio cardio
     ){
-        this.cardioService.create(cardio.getName(),cardio.getGoal(), cardio.getTime().toString());
+        this.cardioService.create(cardio.getName(),cardio.getGoal(), cardio.getTime().toString(), cardio.getUrl());
         return "Success!";
     }
     @PostMapping(value="/find-before")

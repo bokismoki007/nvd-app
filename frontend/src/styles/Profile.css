@@ -1,17 +1,52 @@
-.workout{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 70%;
-    max-width: 800px;
-    margin: 0 auto;
+.body_profile {
+  height: 912px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 50%;
+  /* max-width: 800px; */
+  margin: 0 auto;
+  border: 1px solid #858585;
+  border-radius: 3vh;
+  /* background: linear-gradient(to bottom, #7a7676 30%, #fff 100%); */
+  /* background-color: #858585;
+  box-shadow: 0 5px 18px rgba(255, 255, 255, 0.4); */
+  background-color: rgba(156, 156, 156, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  
+}
+
+td > a {
+  text-decoration: none;
+  color: #000;
+}
+
+td >a:hover {
+    color:#3b3b3b;
+    transition: transform 0.3s, color 0.3s;
+}
+
+table,
+tr,
+td,
+th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 1vh;
 }
 
 table {
-    border: 1px solid black;
+  margin-bottom: 2vh;
+  border-radius: 5vh;
 }
-tr{
-    margin: 5px;
-}
+
+

@@ -55,7 +55,7 @@ const Survey = () => {
           </div>
         </div>
       ))}
-      <button onClick={handleSubmit}>Submit</button>
+      <a target="_blank" onClick={handleSubmit}>Submit</a>
     </div>
   );
 };

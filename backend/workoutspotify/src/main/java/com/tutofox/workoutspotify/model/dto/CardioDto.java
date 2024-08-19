@@ -15,14 +15,16 @@ public class CardioDto{
     private Integer id;
     private String name;
     private int duration;
+    private String url;
 
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name="plan_id")
     private Plan plan;
 
-    public CardioDto(String name, int duration) {
+    public CardioDto(String name, int duration, String url) {
         this.name = name;
         this.duration = duration;
+        this.url = url;
     }
 }

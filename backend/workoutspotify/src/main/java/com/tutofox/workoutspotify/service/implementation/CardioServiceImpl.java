@@ -25,8 +25,8 @@ public class CardioServiceImpl implements CardioService {
     }
 
     @Override
-    public Cardio create(String name, String goal, String time) {
-        Cardio cardio = new Cardio(name,goal,time);
+    public Cardio create(String name, String goal, String time, String url) {
+        Cardio cardio = new Cardio(name,goal,time, url);
         return this.cardioRepository.save(cardio);
     }
 

@@ -96,14 +96,14 @@ span {
   letter-spacing: 0.2rem;
 }
 
-section {
+.color-change {
   color: #babcb1;
 }
 
 button {
   cursor: pointer;
-  border: 3px solid #696969;
-  background-color: #3b3b3b;
+  border: 3px solid #3b3b3b;
+  background-color: #696969;
   border-radius: 35px; 
   padding: 10px;
   color: #babcb1;

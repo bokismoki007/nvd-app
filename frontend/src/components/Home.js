@@ -7,14 +7,14 @@ const Home = () => {
   return (
     <div className="home">
       <header>
-        <video playsInline muted loop className="video">
+        <video autoPlay playsInline muted loop className="video">
           /*autoPlay is missing ^ */
           <source src="../../images/video-.mp4" type="video/mp4" />
         </video>
 
         <Navbar />
 
-        <section>
+        <section className="color-change">
           <div className="slogans">
             <h1>
               WORK HARD, PLAY EVEN <span>HARDER</span>.

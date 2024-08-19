@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface ExerciseService {
-    Exercise create(String name, String type, String targetMuscles, String goal, int sets, int minReps, int maxReps);
+    Exercise create(String name, String type, String targetMuscles, String goal, int sets, int minReps, int maxReps, String url);
 
     void delete(Integer id);
 

@@ -35,7 +35,7 @@ public class ExerciseController {
     public String createExercise(
             @RequestBody Exercise exercise
     ){
-            this.exerciseService.create(exercise.getName(),exercise.getType().toString(), exercise.getTargetMuscles(), exercise.getGoal(), exercise.getSets(), exercise.getMinReps(), exercise.getMaxReps());
+            this.exerciseService.create(exercise.getName(),exercise.getType().toString(), exercise.getTargetMuscles(), exercise.getGoal(), exercise.getSets(), exercise.getMinReps(), exercise.getMaxReps(), exercise.getUrl());
             return "Success!";
     }
     @PostMapping(value = "/find")

@@ -10,7 +10,7 @@ public class ExerciseMapper {
     public ExerciseDto exerciseToDto (Exercise exercise, String goal, String currentBody, String targetBody){
         int reps = determineReps(exercise,currentBody,targetBody);
         Weight weight = determineWeight(goal,currentBody);
-        return new ExerciseDto(exercise.getName(), exercise.getType(), exercise.getTargetMuscles(), weight, exercise.getSets(), reps);
+        return new ExerciseDto(exercise.getName(), exercise.getType(), exercise.getTargetMuscles(), weight, exercise.getSets(), reps, exercise.getUrl());
     }
     public Weight determineWeight(String goal, String currentBody){
         Weight weight = null;

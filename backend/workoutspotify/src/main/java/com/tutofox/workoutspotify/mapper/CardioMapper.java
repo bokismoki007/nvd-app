@@ -17,7 +17,7 @@ public class CardioMapper {
         if(targetBody.equals("athletic") || targetBody.equals("flat stomach")){
             duration = 15;
         }
-        return new CardioDto(cardio.getName(),duration);
+        return new CardioDto(cardio.getName(),duration, cardio.getUrl());
     }
     public CardioDto cardioToDtoAfter(Cardio cardio, String activity){
         int duration = 0;
@@ -30,6 +30,6 @@ public class CardioMapper {
         if(activity.equals("Very active") || activity.equals("Highly active")){
             duration = 15;
         }
-        return new CardioDto(cardio.getName(), duration);
+        return new CardioDto(cardio.getName(), duration, cardio.getUrl());
     }
 }

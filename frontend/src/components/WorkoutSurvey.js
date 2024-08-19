@@ -122,8 +122,8 @@ const WorkoutSurvey = () => {
     }
   };
 
-  const lastUpdate = (oldArray,answe) =>{
-      oldArray.push(answe)
+  const lastUpdate = (oldArray,answer) =>{
+      oldArray.push(answer)
       handleSubmit(oldArray)
   };
 
