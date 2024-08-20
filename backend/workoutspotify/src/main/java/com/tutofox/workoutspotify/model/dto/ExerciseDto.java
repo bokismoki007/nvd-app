@@ -8,8 +8,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
@@ -31,11 +29,11 @@ public class ExerciseDto{
         private Plan plan;
         private String url;
 
-        public ExerciseDto(String name, Type type, String targetMuscle, Weight weight, int sets, int reps, String url) {
+        public ExerciseDto(String name, Type type, String targetMuscle, String weight, int sets, int reps, String url) {
                 this.name = name;
                 this.type = type;
                 this.targetMuscle = targetMuscle;
-                this.weight = weight;
+                this.weight = Weight.valueOf(weight);
                 this.sets = sets;
                 this.reps = reps;
                 this.url = url;

@@ -66,7 +66,6 @@ public class CardioController {
             @RequestParam String activity,
             @RequestParam String userId
     ){
-        if(!activity.equals("sedentary")){
             if(!userId.equals("nothing")){
                 CardioDto dto = this.cardioService.findCardioAfter(goal, activity);
                 List<Plan> plans = this.planRepository.findAll();
@@ -81,10 +80,6 @@ public class CardioController {
             else{
                 return new ResponseEntity<>(this.cardioService.findCardioAfter(goal, activity), HttpStatus.OK);
             }
-        }
-        else{
-            return null;
-        }
     }
     @GetMapping(value = "/before/{planId}")
     public ResponseEntity<CardioDto> getBeforeByPlanId(@PathVariable("planId") Integer planId){

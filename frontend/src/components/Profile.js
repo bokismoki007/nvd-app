@@ -16,7 +16,9 @@ const Profile = () => {
       navigate("/");
     }
   };
-
+  const setId = (id) => {
+    sessionStorage.setItem("planId",id);
+  }
   useEffect(() => {
     fetch(`http://localhost:8080/api/playlist/user/${userInfo.id}`)
       .then((response) => response.json())
@@ -82,11 +84,10 @@ const Profile = () => {
               <td>{plan.name}</td>
               <td>
                 <Link
-                  to="/plan"
-                  target="_blank"
-                  state={{
-                    id: plan.id,
-                  }}
+                    to="/redirect"
+                    state={{
+                      planId: plan.id,
+                    }}
                 >
                   View
                 </Link>

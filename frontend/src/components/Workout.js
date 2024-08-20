@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../styles/Workout.css";
@@ -11,17 +11,53 @@ const Workout = () => {
   const [exercises, setExercises] = useState([]);
   const googleSearch = "https://www.google.com/search?q=";
   const images = "../images/vezhbi/";
-
-  const moodSurvey = () => {
-    window.location.href = "/mood-survey";
-  };
+  const onLoad = () => {
+    if(!sessionStorage.getItem('exercises')){
+      setExercises(location.state.exercises);
+      setBeforeCardio(location.state.before);
+      setAfterCardio(location.state.after);
+      sessionStorage.setItem('before',JSON.stringify(location.state.before));
+      sessionStorage.setItem('exercises',JSON.stringify(location.state.exercises));
+      sessionStorage.setItem('after',JSON.stringify(location.state.after));
+    }
+    else {
+      setExercises(JSON.parse(sessionStorage.getItem('exercises')));
+      setBeforeCardio(JSON.parse(sessionStorage.getItem('before')));
+      setAfterCardio(JSON.parse(sessionStorage.getItem('after')));
+    }
+  }
 
   useEffect(() => {
-    setExercises(location.state.exercises);
-    setBeforeCardio(location.state.before);
-    setAfterCardio(location.state.after);
-  }, [location.state]);
+    if(sessionStorage.getItem("planId")){
+        fetch(`http://localhost:8080/api/plan/planId/${sessionStorage.getItem("planId")}`)
+            .then(response => response.json())
+            .then(data => {
+              setExercises(data)
+            });
+        fetch(`http://localhost:8080/api/cardio/before/${sessionStorage.getItem("planId")}`)
+          .then(response => response.json())
+          .then(data => {
+            setBeforeCardio(data)
+          });
+        fetch(`http://localhost:8080/api/cardio/after/${sessionStorage.getItem("planId")}`)
+          .then(response => response.json())
+          .then(data => {
+            setAfterCardio(data)
+          });
+    }
+    else{
+      onLoad();
+    }
+  },[location.state]);
 
+  const deleteContent = () => {
+    sessionStorage.removeItem("before");
+    sessionStorage.removeItem("exercises");
+    sessionStorage.removeItem("after");
+  }
+  const deletePlan = () => {
+      sessionStorage.removeItem("planId");
+  }
   return (
     <div className="workout">
       <h1>Workout Plan</h1>
@@ -33,7 +69,7 @@ const Workout = () => {
         <div className="beforeAfter">
           <h2 className="title">Before workout</h2>
           <img src={images + beforeCardio.url} alt="exercise" />
-          <a /*href={googleSearch + exercise.name}*/>
+          <a href={googleSearch + beforeCardio.name} target="_blank">
             <button className="survey-button">How To</button>
           </a>
           <div className="content_">
@@ -50,7 +86,7 @@ const Workout = () => {
           <div key={index} className="workout-data">
             <h3 className="title">{exercise.name}</h3>
             <img src={images + exercise.url} alt="exercise" />
-            <a href={googleSearch + exercise.name}>
+            <a href={googleSearch + exercise.name} target="_blank">
               <button className="survey-button">How To</button>
             </a>
             <div className="content_">
@@ -74,7 +110,7 @@ const Workout = () => {
           <div className="beforeAfter">
             <h2 className="title">After workout</h2>
             <img src={images + afterCardio.url} alt="exercise" />
-            <a /*href={googleSearch + exercise.name}*/>
+            <a href={googleSearch + afterCardio.name} target="_blank">
               <button className="survey-button">How To</button>
             </a>
             <div className="content_">
@@ -88,8 +124,15 @@ const Workout = () => {
           </div>
         )}
       </Carousel>
-
-      <button onClick={moodSurvey}>Generate a Personalized Playlist</button>
+      <br/>
+      <Link to="/mood-survey"><button>Generate a Personalized Playlist</button></Link>
+      <br/>
+        {sessionStorage.getItem("planId") ? (
+            <Link to="/profile"><button onClick={deletePlan}>Go To Profile</button></Link>
+        ) : (
+            <Link to="/"><button onClick={deleteContent}>Go Home</button></Link>
+        )}
+      <br/>
     </div>
   );
 };

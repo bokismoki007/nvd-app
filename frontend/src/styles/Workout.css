@@ -1,5 +1,4 @@
 .workout {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +30,7 @@
 .workout-carousel,
 .carousel,
 .carousel-slider {
-  margin: 60px auto;
+  margin: 35px auto;
   max-width: 600px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
   border-radius: 20px;

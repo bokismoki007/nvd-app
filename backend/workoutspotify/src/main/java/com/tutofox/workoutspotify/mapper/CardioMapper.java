@@ -21,6 +21,9 @@ public class CardioMapper {
     }
     public CardioDto cardioToDtoAfter(Cardio cardio, String activity){
         int duration = 0;
+        if(activity.equals("Sedentary")){
+            duration = 2;
+        }
         if(activity.equals("Somewhat active")){
             duration = 5;
         }

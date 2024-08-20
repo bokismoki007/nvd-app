@@ -45,7 +45,7 @@ public class CardioServiceImpl implements CardioService {
         CardioDto result = null;
         List<CardioDto> getAll = this.cardioRepository2.findAll();
         for(CardioDto dto : getAll){
-            if(dto.getPlan().getId().equals(planId) && !dto.getName().equals("Running")){
+            if(dto.getPlan().getId().equals(planId) && !dto.getName().equals("Floor Hip Abduction")){
                 result = dto;
             }
         }
@@ -56,7 +56,7 @@ public class CardioServiceImpl implements CardioService {
         CardioDto result = null;
         List<CardioDto> getAll = this.cardioRepository2.findAll();
         for(CardioDto dto : getAll){
-            if(dto.getPlan().getId().equals(planId) && dto.getName().equals("Running")){
+            if(dto.getPlan().getId().equals(planId) && dto.getName().equals("Floor Hip Abduction")){
                 result = dto;
             }
         }

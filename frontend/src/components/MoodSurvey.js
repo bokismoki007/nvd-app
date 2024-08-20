@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Link, useNavigate, useLocation} from "react-router-dom";
 import Loading from "./Loading";
 import "../styles/MoodSurvey.css";
 import AnswerCard from "./AnswerCard";
 import axios from "axios";
 
 const MoodSurvey = () => {
+  const location = useLocation();
   const [loading, setLoading] = useState(false);
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -96,7 +97,8 @@ const MoodSurvey = () => {
     }
     setTimeout(() => {
       setLoading(false);
-      window.location.href=link;
+      window.open(link,"_blank").focus();
+      window.location.href="/workout"
     }, 2000);
   };
 
