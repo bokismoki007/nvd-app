@@ -36,7 +36,7 @@ const Test = () => {
       window.location.href="/login"
       // Handle success, e.g., redirect to another page
     } catch (error) {
-      alert('Registration failed: ' + error.response.data);
+      alert(error.response.data.message);
       // Handle error, e.g., display an error message
     }
   }
@@ -68,7 +68,7 @@ const Test = () => {
         // Handle unsuccessful login, e.g., display an error message
       }
     } catch (error) {
-      alert('Login failed: ' + error.response.data);
+      alert(error.response.data);
       // Handle error, e.g., display an error message
     }
   }
