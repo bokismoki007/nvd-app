@@ -31,7 +31,7 @@ const MoodSurvey = () => {
     sad: 'https://open.spotify.com/playlist/37i9dQZF1DX76Wlfdnj7AP',
     energetic: 'https://open.spotify.com/playlist/0eGBLt9vFkefYCF543CxaY',
     joyful: 'https://open.spotify.com/playlist/37i9dQZF1EQp9BVPsNVof1',
-    relaxed: 'https://open.spotify.com/playlist/37i9dQZF1EIhshGKK0SEkb',
+    relaxed: 'https://open.spotify.com/album/01iBho12GA2frs4Oh8xCpo',
     drowsy: 'https://open.spotify.com/playlist/37i9dQZF1EIgbjUtLiWmHt'
   };
   const handleAnswerChange = (answer) => {

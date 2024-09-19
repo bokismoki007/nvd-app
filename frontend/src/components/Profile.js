@@ -53,12 +53,12 @@ const Profile = () => {
           {playlists.map((playlist, i) => (
             <tr key={i}>
               <td>{playlist.name}</td>
-              <td>
+              <td className="text-info">
                 <a target="_blank" href={playlist.url}>
                   View
                 </a>
               </td>
-              <td>
+              <td className="text-danger">
                 <Link
                   to="/delete-playlist"
                   state={{
@@ -73,7 +73,7 @@ const Profile = () => {
           ))}
         </table>
         <h3>Plans</h3>
-        <table>
+        <table className="plan">
           <tr>
             <th>Name</th>
             <th>Link-1</th>
@@ -82,7 +82,7 @@ const Profile = () => {
           {plans.map((plan, i) => (
             <tr key={i}>
               <td>{plan.name}</td>
-              <td>
+              <td className="text-info">
                 <Link
                     to="/redirect"
                     state={{
@@ -92,7 +92,7 @@ const Profile = () => {
                   View
                 </Link>
               </td>
-              <td>
+              <td className="text-danger">
                 <Link
                   to="/delete-plan"
                   state={{

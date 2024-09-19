@@ -44,9 +44,24 @@ th {
   padding: 1vh;
 }
 
+th {
+  background: #b4afb8;
+}
+
+td {
+  background: whitesmoke;
+}
+
 table {
   margin-bottom: 2vh;
   border-radius: 5vh;
 }
-
-
+.text-info:hover {
+  background: #abe0ff;
+}
+.text-danger:hover {
+  background: #ffcdd7
+}
+.plan {
+  margin-bottom: 25px;
+}
